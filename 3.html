@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            margin-top: 30px;
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #000;
+            font-size: 18px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+        }
+
+        tr {
+            border-bottom: 1px solid #000;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="search">
+        <input class="search__input" type="text" placeholder="Szukaj...">
+        <button class="button search__button">Szukaj</button>
+    </div>
+    <table class="table">
+        <tr>
+            <td>Walmart</td>
+        </tr>
+        <tr>
+            <td>State Grid</td>
+        </tr>
+        <tr>
+            <td>Sinopec Group</td>
+        </tr>
+        <tr>
+            <td>China National Petroleum</td>
+        </tr>
+        <tr>
+            <td>Royal Dutch Shell</td>
+        </tr>
+        <tr>
+            <td>Toyota Motor</td>
+        </tr>
+        <tr>
+            <td>Volkswagen</td>
+        </tr>
+        <tr>
+            <td>BP</td>
+        </tr>
+        <tr>
+            <td>Exxon Mobil</td>
+        </tr>
+        <tr>
+            <td>Berkshire Hathaway</td>
+        </tr>
+    </table>
+</body>
+<script>
+
+    var input = document.getElementsByClassName("search__input")[0];
+    var table = document.getElementsByClassName("table")[0];
+    var tr = table.getElementsByTagName("tr");
+    var search_button = document.getElementsByClassName("search__button")[0];
+
+    function search() {
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0].textContent;
+            if (td) {
+                if (td.toUpperCase().indexOf(input.value.toUpperCase()) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    search_button.addEventListener("click", function (event) {
+        search();
+    })
+
+    input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            search();
+        }
+    });
+</script>
+
+</html>
